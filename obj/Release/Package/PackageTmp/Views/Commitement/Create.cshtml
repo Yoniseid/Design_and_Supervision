@@ -1,0 +1,181 @@
+﻿
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+@model Design_and_Supervion_Issue_Tracking.Models.ModelCommitement
+<br />
+
+<div class="panel panel-primary">
+    <div class="panel-heading"><h2>Add Acceptance Letter </h2></div>
+    <div class="panel-body">
+
+        @using (Html.BeginForm("Create", "Commitement", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+
+
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group row">
+                @Html.LabelFor(model => model.CommitmentLetterno, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.CommitmentLetterno, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CommitmentLetterno, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group row">
+                @Html.LabelFor(model => model.attachement, "Attachement ", new { @class = "col-sm-12 col-md-3 col-lg-2 col-form-label" })
+                <div class="col-sm-12 col-md-9 col-lg-10">
+
+                    @Html.TextBox("file", null, new { @class = "form-control", @type = "file", @data_val = "true", @data_val_required = "Letter Attachement is reqired" })
+                    <div class="valid-feedback">
+                        <span class="has-error" data-valmsg-for="file" data-valmsg-replace="true"></span>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group row text-right">
+                <div class="col-sm-12 col-md-9 col-lg-10">
+                    <input type="submit" value="Submit Form" class="btn btn-primary" />
+                </div>
+            </div>
+            <div>
+
+                <input id="projno" name="projno" type="hidden" />
+
+
+
+            </div>
+
+
+        }
+
+    </div>
+</div>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script type="text/javascript">
+
+
+
+
+    $(document).ready(function () {
+        $('input:text').each(function () {
+            $(this).attr('enable', true);
+        });
+
+
+        $("[id$='projectno']").change(function () {
+            var taxText = $("#projectno option:selected").text();;
+            $("#projno").val(taxText);
+        })
+
+
+
+
+
+
+    });
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

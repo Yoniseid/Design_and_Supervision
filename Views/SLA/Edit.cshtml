@@ -1,0 +1,176 @@
+﻿@model Design_and_Supervion_Issue_Tracking.Models.ModelSLA
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="panel panel-primary">
+        <div class="panel-heading"><h2>Update SLA Letter </h2></div>
+        <div class="panel-body">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.id)
+
+            <input id="projno" name="projno" value="@ViewBag.SelectedProject" type="hidden" />
+            <div class="form-group row">
+                <div class="col-md-4 mb-0">
+                    @Html.LabelFor(model => model.Projectno, "Project ")
+                    <div class="valid-feedback">
+                        @if (ViewBag.Projectno != null)
+                        {
+                            @Html.DropDownListFor(model => model.Projectno, ViewBag.Projectno as SelectList, "--Select--", new { @class = "form-control" })
+                        }
+                        @Html.ValidationMessageFor(model => model.Projectno, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                @Html.LabelFor(model => model.SentTo, "Sent To ", new { @class = "col-sm-12 col-md-3 col-lg-2 col-form-label" })
+
+                <div class="col-sm-12 col-md-9 col-lg-10">
+                    <input type="checkbox" name="Internal" id="Internal" value="Internal">Sent To Internal:
+                    @if (ViewBag.SentTo != null)
+                    {
+                        @Html.DropDownList("InternalId", (IEnumerable<SelectListItem>)ViewBag.SentTo, "--Select--", new { @class = "hidden" })
+                        <br />
+                    }
+                    <label>Sent To Outside</label>
+                    @Html.TextBoxFor(model => model.SentTo, "", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.SentTo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                <div class="col-md-4 mb-0">
+                    @Html.Label("Letter no")
+                    <div class="valid-feedback">
+
+                        @Html.EditorFor(model => model.SLAnumber, new { htmlAttributes = new { @class = "form-control" } })
+
+                        @Html.ValidationMessageFor(model => model.SLAnumber, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                @Html.LabelFor(model => model.attachement, htmlAttributes: new { @class = "col-sm-12 col-md-3 col-lg-2 col-form-label" })
+                <div class="col-md-4 mb-0">
+                    @Html.HiddenFor(model => model.attachement, new { htmlAttributes = new { @class = "form-control" } })
+                    <img src="@Url.Content(Session["attachement"].ToString())" width="50" height="50" />
+                    <input type="file" accept=".jpg,.jpeg,.png,jpe" name="file" id="file" />
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $("#ResponsibleDepartment").change(function () {
+            var DepId = $(this).val();
+            debugger
+            $.ajax({
+                type: "post",
+                url: "/Admin/GetSelectedEmployee?ResponsibleDepartment=" + DepId,
+                contentType: "html",
+                success: function (response) {
+                    debugger
+                    $("#DepartmentHead").empty();
+                    $("#DepartmentHead").append(response);
+                }
+            })
+
+        })
+
+    });
+
+    $('#Internal').click(function () {
+        if (this.checked) {
+            $("#InternalId").removeAttr("class", "hidden")
+            $("#InternalId").show('fast')
+        }
+               
+        else {
+
+            $("#InternalId").hide('fast')
+
+        }
+
+    });
+
+    $(document).ready(function () {
+        $('input:text').each(function () {
+            $(this).attr('enable', true);
+        });
+
+
+        $("[id$='Projectno']").change(function () {
+            var taxText = $("#Projectno option:selected").text();;
+            $("#projno").val(taxText);
+        })
+        $("[id$='InternalId']").change(function () {
+            var taxText = $("#InternalId option:selected").text();;
+            $("#SentTo").val(taxText);
+        })
+
+        $("[id$='Branch']").change(function () {
+            var taxText = $("#Branch option:selected").text();;
+            $("#BId").val(taxText);
+        })
+
+        $("[id$='DepartmentHead']").change(function () {
+            var taxText4 = $("#DepartmentHead option:selected").text();;
+            $("#DepHID").val(taxText4);
+
+        })
+        $("[id$='FollowerName']").change(function () {
+            var taxText4 = $("#FollowerName option:selected").text();;
+            $("#FID").val(taxText4);
+
+        })
+        $("[id$='OpenedByClient']").change(function () {
+            var taxText4 = $("#OpenedByClient option:selected").text();;
+            $("#OpenedBy").val(taxText4);
+
+        })
+        $("[id$='IssueType']").change(function () {
+            var taxText4 = $("#IssueType option:selected").text();;
+            $("#IssID").val(taxText4);
+
+        })
+
+        $("[id$='status']").change(function () {
+            var taxText4 = $("#status option:selected").text();;
+            $("#Stat").val(taxText4);
+
+        })
+        $("[id$='Sevirity']").change(function () {
+            var taxText4 = $("#Sevirity option:selected").text();;
+            $("#Sevir").val(taxText4);
+
+        })
+
+    });
+
+
+
+
+</script>
+

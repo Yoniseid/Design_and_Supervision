@@ -1,0 +1,135 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row" style="background-color:aliceblue">
+
+    <div class="col-md-12">
+        <div class="panel panel-primary list-panel" id="list-panel">
+            <div class="panel-heading list-panel-heading">
+                <h1 class="panel-title list-panel-title">List Of Tender History</h1>
+            </div>
+            <div class="panel-body">
+
+                <div class="col-md-12">
+                    <div class="panel panel-primary list-panel" id="list-panel">
+                        <div class="panel-heading list-panel-heading">
+                            <h1 class="panel-title list-panel-title">Tender History</h1>
+                        </div>
+                        <div class="panel-body">
+
+
+                            <br /><br />
+                            <table id="example2" class="display table nowrap table-bordered" style="width:100%; border-collapse:separate; border-spacing:5px 0;">
+                                <thead class="thead-dark">
+                                    <tr>
+
+                                        <th data-priority="1" style="background-color:lightgray;color: #000000">
+                                            Request Type
+                                        </th>
+                                        <th data-priority="2" style="background-color:lightgray;color: #000000">
+                                            Responsible Unit
+                                        </th>
+                                        <th data-priority="3" style="background-color:lightgray;color: #000000">
+                                            Request Attachement
+                                        </th>
+                                        <th data-priority="4" style="background-color:lightgray;color: #000000">
+                                            Technical Doc Returned
+                                        </th>
+                                        <th data-priority="5" style="background-color:lightgray;color: #000000">Financial Doc Returned</th>
+                                        <th data-priority="6" style="background-color:lightgray;color: #000000">Other Attachement</th>
+                                        <th data-priority="7" style="background-color:lightgray;color: #000000">Response Remark</th>
+
+
+                                    </tr>
+
+                                </thead>
+                                <tbody>
+
+                                    @foreach (var item in ViewData.Model)
+                                    {
+
+                                        <tr style='color: @(@item["status"] == 2 ? "red" : "black");'>
+
+
+
+                                            <td>@item["RequestType"]</td>
+                                            <td>@item["ToDept"]</td>
+                                            <td>@item["RequestAttachement"]</td>
+                                            <td><a href="~/Tender/DownloadFile?filePath=@item["RequestAttachement"]">Download</a> </td>
+                                            <td><a href="~/Tender/DownloadFile?filePath=@item["TechnicalDocAttach"]">Download</a></td>
+                                            <td><a href="~/Tender/DownloadFile?filePath=@item["FinancialDocAttach"]">Download</a></td>
+                                            <td><a href="~/Tender/DownloadFile?filePath=@item["Otherattachement"]">Download</a></td>
+                                            <td><a href="~/Tender/DownloadFile?filePath=@item["ResponseRemark"]">Download</a></td>
+
+
+
+
+
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+
+                    @if (Session["role"].ToString() == "Admin" || Session["role"].ToString() == "AdminUser")
+                    {
+
+
+                        @Html.ActionLink("Back to Tender List", "Index", "Tender")
+
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @section Scripts
+{
+
+
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#example2').DataTable({
+                    "scrollY": 500,
+                    "scrollX": true,
+                    "responsive": true,
+
+                    "columnDefs": [
+                        { responsivePriority: 1 },
+                        { responsivePriority: 2 },
+                        { responsivePriority: 3 },
+                        { responsivePriority: 4 },
+                        { responsivePriority: 5 },
+                        { responsivePriority: 6 },
+                        { responsivePriority: 7 },
+                        { responsivePriority: 8 }
+
+
+                    ]
+
+                });
+            });
+
+
+
+        </script>
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,159 @@
+﻿<div class="row" style="background-color:aliceblue">
+
+    <div class="col-md-12">
+        <div class="panel panel-primary list-panel" id="list-panel">
+            <div class="panel-heading list-panel-heading">
+                <h1 class="panel-title list-panel-title"></h1>
+            </div>
+            <div class="panel-body">
+
+                <div class="col-md-12">
+                    <div class="panel panel-primary list-panel" id="list-panel">
+                        <div class="panel-heading list-panel-heading">
+                            <h1 class="panel-title list-panel-title">Tender Details</h1>
+                        </div>
+                        <div class="panel-body">
+
+
+                            <br /><br />
+                            <table id="example2" class="display table nowrap table-bordered" style="width:100%; border-collapse:separate; border-spacing:5px 0;">
+                                <thead class="thead-dark">
+                                    <tr>
+
+                                        <th data-priority="1" style="background-color:lightgray;color: #000000">
+                                            Project
+                                        </th>
+                                        <th data-priority="2" style="background-color:lightgray;color: #000000">
+                                            Tender Doc Number
+                                        </th>
+                                        <th data-priority="3" style="background-color:lightgray;color: #000000">
+                                            Client
+                                        </th>
+                                        <th data-priority="4" style="background-color:lightgray;color: #000000">
+                                            Remark
+                                        </th>
+                                        <th data-priority="5" style="background-color:lightgray;color: #000000">
+                                            Main Attachement
+                                        </th>
+                                        <th data-priority="6" style="background-color:lightgray;color: #000000">
+                                            Other Attachment
+                                        </th>
+                                        <th data-priority="7" style="background-color:lightgray;color: #000000">
+                                            Request Type
+                                        </th>
+                                        <th data-priority="8" style="background-color:lightgray;color: #000000">
+                                            Request Mode
+                                        </th>
+                                        <th data-priority="9" style="background-color:lightgray;color: #000000">
+                                            Request SentTo
+                                        </th>
+                                        <th data-priority="10" style="background-color:lightgray;color: #000000">
+                                            Request Remark
+                                        </th>
+                                        <th data-priority="11" style="background-color:lightgray;color: #000000">
+                                            Request Attachement
+                                        </th>
+                                        <th data-priority="12" style="background-color:lightgray;color: #000000">
+                                            Response Technical Doc
+                                        </th>
+                                        <th data-priority="13" style="background-color:lightgray;color: #000000">
+                                            Response Financial Doc
+                                        </th>
+                                        <th data-priority="14" style="background-color:lightgray;color: #000000">
+                                            Response Other attachement
+                                        </th>
+                                        <th data-priority="15" style="background-color:lightgray;color: #000000">
+                                            ResponseRemark
+                                        </th>
+
+
+
+                                    </tr>
+
+                                </thead>
+                                <tbody>
+
+                                    @foreach (var item in ViewData.Model)
+                                    {
+
+                                    <tr style='color: black;'>
+
+
+                                        <td>@item["ProjectName"]</td>
+                                        <td>@item["TenderDocNumber"]</td>
+                                        <td>@item["ClientName"]</td>
+                                        <td>@item["Remark"]</td>
+                                        <td><a href="~/Tender/DownloadFile?filePath=@item["Main_Attachement"]">Download</a> </td>
+                                        <td><a href="~/Tender/DownloadFile?filePath=@item["Other_Attachment"]">Download</a> </td>
+                                        <td>@item["RequestType"]</td>
+                                        <td>@item["RequestMode"]</td>
+                                        <td>@item["Sentto"]</td>
+                                        <td>@item["RequestRemark"]</td>
+                                        <td><a href="~/Tender/DownloadFile?filePath=@item["RequestAttachement"]">Download</a> </td>
+                                        <td><a href="~/Tender/DownloadFile?filePath=@item["TechDocProposal"]">Download</a> </td>
+                                        <td><a href="~/Tender/DownloadFile?filePath=@item["FinDocProposal"]">Download</a> </td>
+                                        <td><a href="~/Tender/DownloadFile?filePath=@item["OtherAttachement"]">Download</a> </td>
+                                        <td>@item["ResponseRemark"]</td>
+
+
+                                    </tr>
+                                    }
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>>
+
+    @section Scripts
+{
+
+
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#example2').DataTable({
+                    "scrollY": 500,
+                    "scrollX": true,
+                    "responsive": true,
+
+                    "columnDefs": [
+                        { responsivePriority: 1 },
+                        { responsivePriority: 2 },
+                        { responsivePriority: 3 },
+                        { responsivePriority: 4 },
+                        { responsivePriority: 5 },
+                        { responsivePriority: 6 },
+
+                        { responsivePriority: 7 },
+                        { responsivePriority: 8 },
+                        { responsivePriority: 9 },
+                        { responsivePriority: 10 },
+
+                        { responsivePriority: 11 },
+                        { responsivePriority: 12 },
+                        { responsivePriority: 13 },
+                        { responsivePriority: 14 },
+                        { responsivePriority: 15 },
+                        { responsivePriority: 16 },
+                        { responsivePriority: 17 },
+                        { responsivePriority: 18 },
+                        { responsivePriority: 17 },
+                        { responsivePriority: 18 }
+
+
+                    ]
+
+                });
+            });
+
+
+
+        </script>
+
+
+    }
+

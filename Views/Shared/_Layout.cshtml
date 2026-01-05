@@ -1,0 +1,57 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Design and Supervison Control and Monitoring System</title>
+@Styles.Render("~/Content/css")
+@Scripts.Render("~/bundles/modernizr")
+@Scripts.Render("~/Scripts/jquery-ui-1.13.0.min.js")
+@Scripts.Render("~/Scripts/DataTables/jquery.dataTables.js")
+
+
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+            </div>
+            <div class="navbar-collapse collapse te">
+                <ul class="nav navbar-nav">
+                    @if (Session["role"] != null)
+                    {
+                        <li>@Html.ActionLink("Logout", "Login", "Tender")</li>
+                    }
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Construction Design and Supervision Works</p>
+        </footer>
+    </div>
+
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@Styles.Render("~/Content/datatables")
+@Scripts.Render("~/bundles/datatables")
+@RenderSection("scripts", required: false)
+</body>
+</html>
+
+
+
+

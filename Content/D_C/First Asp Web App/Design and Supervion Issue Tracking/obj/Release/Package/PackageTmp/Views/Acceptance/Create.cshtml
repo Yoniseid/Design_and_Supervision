@@ -1,0 +1,184 @@
+﻿
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+@model Design_and_Supervion_Issue_Tracking.Models.ModelAcceptance
+<br />
+
+<div class="panel panel-primary">
+    <div class="panel-heading"><h2>Add Acceptance Letter </h2></div>
+    <div class="panel-body">
+
+        @using (Html.BeginForm("Create", "Acceptance", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+
+
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group row">
+                <div class="col-md-4 mb-0">
+                    @Html.LabelFor(model => model.tenderdocnumber, "Tender Number ")
+                    <div class="valid-feedback">
+                        @if (ViewBag.tenderdocnumber != null)
+                        {
+                            @Html.DropDownListFor(model => model.tenderdocnumber, ViewBag.tenderdocnumber as SelectList, "--Select--", new { @class = "form-control" })
+                        }
+                        @Html.ValidationMessageFor(model => model.tenderdocnumber, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-group row">
+                <div class="col-md-4 mb-0">
+                    @Html.Label("Letter Number ")
+                    <div class="valid-feedback">
+
+                        @Html.EditorFor(model => model.AcceptanceLetterno, new { htmlAttributes = new { @class = "form-control" } })
+
+                        @Html.ValidationMessageFor(model => model.AcceptanceLetterno, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="form-group row">
+                @Html.LabelFor(model => model.attachement, "Attachement ", new { @class = "col-sm-12 col-md-3 col-lg-2 col-form-label" })
+                <div class="col-sm-12 col-md-9 col-lg-10">
+
+                    @Html.TextBox("file", null, new { @class = "form-control", @type = "file", @data_val = "true", @data_val_required = "Letter Attachement is reqired" })
+                    <div class="valid-feedback">
+                        <span class="has-error" data-valmsg-for="file" data-valmsg-replace="true"></span>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group row text-right">
+                <div class="col-sm-12 col-md-9 col-lg-10">
+                    <input type="submit" value="Submit Form" class="btn btn-primary" />
+                </div>
+            </div>
+            <div>
+
+                <input id="tenderno" name="tenderno" type="hidden" />
+
+
+
+            </div>
+
+
+        }
+
+    </div>
+        </div>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script type="text/javascript">
+
+
+
+
+    $(document).ready(function () {
+        $('input:text').each(function () {
+            $(this).attr('enable', true);
+        });
+
+
+        $("[id$='tenderdocnumber']").change(function () {
+            var taxText = $("#tenderdocnumber option:selected").text();;
+            $("#tenderno").val(taxText);
+        })
+
+       
+
+
+
+
+    });
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

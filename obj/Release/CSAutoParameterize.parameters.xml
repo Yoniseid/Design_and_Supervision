@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="design-Web.config Connection String" description="design Connection String used in web.config by the application to access the database." defaultValue="data source=DESKTOP-4NEQ4OR\SQLEXPRESS; database=CERP_BUDSWS;integrated security=true" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="D:\\First\ Asp\ Web\ App\\Design\ and\ Supervion\ Issue\ Tracking\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='design']/@connectionString" />
+  </parameter>
+</parameters>

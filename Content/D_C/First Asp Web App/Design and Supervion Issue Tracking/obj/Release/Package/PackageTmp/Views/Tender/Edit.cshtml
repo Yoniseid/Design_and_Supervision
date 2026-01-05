@@ -1,0 +1,246 @@
+﻿@model Design_and_Supervion_Issue_Tracking.Models.ModelTender
+
+
+<div class="panel panel-primary">
+    <div class="panel-heading"><h2>Edit Interest</h2></div>
+    <div class="panel-body">
+        @Html.Raw(ViewBag.msg1);
+
+        @using (Html.BeginForm("Edit", "Tender", FormMethod.Post,
+            new { enctype = "multipart/form-data" }))
+
+        {
+            @Html.AntiForgeryToken()  
+
+            <input id="cNo" name="cNo" value="@ViewBag.SelectedClient"  type="hidden"/>
+            <input id="Team" name="Team" value="@ViewBag.SelectedAssignedTeam"  type="hidden"/>
+            <input id="Selpersonnel" name="Selpersonnel" value="@ViewBag.SelectedResponsiblePersonnel"  type="hidden"/>
+            <input id="Selstatus" name="Selstatus" value="@ViewBag.SelectedStatus"  type="hidden" />
+            <input id="Type" name="Type" value="@ViewBag.SelectedTypeOfWork"  type="hidden"/>
+           
+            
+            <div class="form-horizontal">
+
+
+
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.id)
+                <div class="form-group">
+                    @Html.Label("Initiation Type ", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+
+                        @Html.DropDownList("InitiationType", new List<SelectListItem>
+                   {
+
+                         new SelectListItem {Text="Expresion of Interst", Value="Expresion of Interst"},
+                         new SelectListItem {Text="Request Letter", Value="Request Letter"},
+                         new SelectListItem {Text="Request Letter with TOR", Value="Request Letter with TOR"},
+                         new SelectListItem {Text="SBD", Value="SBD"}
+
+
+                    }, "--Select---", new { @class = "form-control", @data_val = "true", @data_val_required = "Type Of Work is reqired" })
+                        <div class="valid-feedback">
+                            <span class="danger" data-valmsg-for="TypeOfWork" data-valmsg-replace="true"></span>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    @Html.LabelFor(model => model.TenderDocNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.TenderDocNumber, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.TenderDocNumber, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    @Html.LabelFor(model => model.ClientName, "Client Name: ", new { @class = "control-label col-md-2" })
+                    <div class="col-sm-12 col-md-9 col-lg-10">
+                        @Html.DropDownListFor(model => model.ClientName, ViewBag.ClientName as SelectList, "--Select--", new { @class = "form-control" })
+
+                        @Html.ValidationMessageFor(model => model.ClientName, "", new { @class = "text-danger" })
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ProjectName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ProjectName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ProjectName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.LetterDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.LetterDate, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.LetterDate, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TenderClosingDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.TenderClosingDate, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.TenderClosingDate, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TypeOfWork, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.TypeOfWork, new List<SelectListItem>
+      {
+
+ new SelectListItem {Text="Supervision", Value="Supervision"},
+                     new SelectListItem {Text="Design", Value="Design"},
+                     new SelectListItem {Text="Supervision and Design", Value="Supervision and Design"}
+
+
+      }, "--Select---", new { @class = "form-control", @data_val = "true", @data_val_required = "Type Of work is reqired" })
+                        <div class="valid-feedback">
+                            <span class="danger" data-valmsg-for="TypeOfWork" data-valmsg-replace="true"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    @Html.LabelFor(model => model.Main_Attachement, htmlAttributes: new { @class = "col-sm-12 col-md-3 col-lg-2 col-form-label" })
+                    <div class="col-md-4 mb-0">
+                        @Html.HiddenFor(model => model.Main_Attachement, new { htmlAttributes = new { @class = "form-control" } })
+                        <img src="@Url.Content(Session["torpath"].ToString())" width="50" height="50" />
+                        <input type="file" accept=".jpg,.jpeg,.png,jpe" name="file" id="file" />
+                    </div>
+
+
+                    <div class="col-md-4 mb-0">
+                        @Html.LabelFor(model => model.Other_Attachment, htmlAttributes: new { @class = "col-sm-12 col-md-3 col-lg-2 col-form-label" })
+                        <div class="col-md-12">
+                            @Html.HiddenFor(model => model.Other_Attachment, new { htmlAttributes = new { @class = "form-control" } })
+                            <img src="@Url.Content(Session["otherpath"].ToString())" width="50" height="50" />
+                            <input type="file" accept=".jpg,.jpeg,.png,jpe" name="file" id="file" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    @Html.LabelFor(model => model.Remark, "Remark ", new { @class = "col-sm-12 col-md-3 col-lg-2 col-form-label" })
+                    <div class="col-sm-12 col-md-9 col-lg-10">
+                        @Html.TextAreaFor(model => model.Remark, new { @class = "form-control", @rows = "6" })
+                        @Html.ValidationMessageFor(model => model.Remark, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    @Html.LabelFor(model => model.Status, "Current Status ", new { @class = "col-sm-12 col-md-3 col-lg-2 col-form-label" })
+                    @Html.DropDownList("Status", new List<SelectListItem>
+                    {
+
+                    new SelectListItem {Text="Active", Value="Active"},
+                      new SelectListItem {Text="Sent To Legal", Value="Sent To Legal"},
+                   new SelectListItem {Text="Won and Closed", Value="Won and Closed"},
+                      new SelectListItem {Text="Failed and Close", Value="Failed and Closed"}
+
+
+
+                     }, "--Select---", new { @class = "form-control", @data_val = "true", @data_val_required = "Current Issue Status is reqired" })
+
+
+                    <div class="valid-feedback">
+                        <span class="has-error" data-valmsg-for="Status" data-valmsg-replace="true"></span>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Save" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+
+</div>
+<div>
+    @Html.ActionLink("Back to Cause List", "Index", "Tender", new { id = Session["EmpID"], subid = Session["SubDepartmentID"] }, null)
+</div>
+
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $("#AssignedTeam").change(function () {
+            var DepId = $(this).val();
+            debugger
+            $.ajax({
+                type: "post",
+                url: "/Tender/GetSelectedEmployee?SubDepartment=" + DepId,
+                contentType: "html",
+                success: function (response) {
+                   // debugger
+                    $("#Responsible_Personnel").empty();
+                    $("#Responsible_Personnel").append(response);
+                }
+            })
+
+        })
+
+    });
+
+   
+
+    $(document).ready(function () {
+        $('input:text').each(function () {
+            $(this).attr('enable', true);
+        });
+
+
+        $("[id$='ClientName']").change(function () {
+            var taxText = $("#ClientName option:selected").text();;
+            $("#cNo").val(taxText);
+        })
+        $("[id$='AssignedTeam']").change(function () {
+            var taxText = $("#AssignedTeam option:selected").text();;
+            $("#Team").val(taxText);
+        })
+
+        $("[id$='Responsible_Personnel']").change(function () {
+            var taxText = $("#Responsible_Personnel option:selected").text();;
+            $("#Selpersonnel").val(taxText);
+        })
+
+        $("[id$='TypeOfWork']").change(function () {
+            var taxText4 = $("#TypeOfWork option:selected").text();;
+            $("#Type").val(taxText4);
+
+        })
+
+        $("[id$='Status']").change(function () {
+            var taxText4 = $("#Status option:selected").text();;
+            $("#Selstatus").val(taxText4);
+
+        })
+
+
+    });
+
+
+
+
+</script>
+
+
+
+
+
+

@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <setParameter name="IIS Web Application Name" value="Default Web Site/Design and Supervion Issue Tracking_deploy" />
+  <setParameter name="design-Web.config Connection String" value="data source=DESKTOP-4NEQ4OR\SQLEXPRESS; database=CERP_BUDSWS;integrated security=true" />
+</parameters>

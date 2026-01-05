@@ -1,0 +1,228 @@
+﻿@model Design_and_Supervion_Issue_Tracking.Models.ModelLegalResponse
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<link href="~/Scripts/jquery-ui.min.css" rel="stylesheet" />
+
+<div class="panel panel-primary">
+    <div class="panel-heading"><h2>New Response </h2></div>
+    <div class="panel-body">
+
+        @using (Html.BeginForm("Create", "LegalResponse", FormMethod.Post,
+            new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+        <div class="form-group row">
+            @Html.Label("Assigned Personnel", "Employee Name ", new { @class = "col-sm-12 col-md-3 col-lg-2 col-form-label" })
+            <div class="col-sm-12 col-md-9 col-lg-10">
+
+                @Html.DropDownListFor(model => model.Responsible_Personnel, new SelectList(""), "--Select Employee--", new { @class = "form-control" })
+
+
+                @Html.ValidationMessageFor(model => model.Responsible_Personnel, "", new { @class = "text-danger" })
+
+            </div>
+        </div>
+           <div class="form-group">
+                @Html.Label("Final Proposal", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="col-sm-12 col-md-9 col-lg-10">
+                        @Html.TextBox("file", null, new { @class = "form-control", @type = "file" })
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.Label("Final Agreement", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="col-sm-12 col-md-9 col-lg-10">
+                        @Html.TextBox("file1", null, new { @class = "form-control", @type = "file" })
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.Label("Other Attachements", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="col-sm-12 col-md-9 col-lg-10">
+                        @Html.TextBox("file2", null, new { @class = "form-control", @type = "file" })
+
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                @Html.LabelFor(model => model.ResponseRemark, "Remark ", new { @class = "col-sm-12 col-md-3 col-lg-2 col-form-label" })
+                <div class="col-sm-12 col-md-9 col-lg-10">
+                    @Html.TextAreaFor(model => model.ResponseRemark, new { @class = "form-control", @rows = "6" })
+                    @Html.ValidationMessageFor(model => model.ResponseRemark, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <input id="emp" name="emp"   type="hidden"/>
+            <input id="subdeprt" name="subdeprt"  type="hidden" />
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-danger" />
+                </div>
+            </div>
+
+
+
+
+
+        }
+
+    </div>
+    <div>
+
+    </div>
+</div>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")
+
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var ToDepId = 200;
+        debugger
+        $.ajax({
+            type: "post",
+            url: "/Tender/GetSelectedEmployee?SubDepartment=" + ToDepId,
+            contentType: "html",
+            success: function (response) {
+                debugger
+                $("#Responsible_Personnel").empty();
+                $("#Responsible_Personnel").append(response);
+            }
+        })
+
+    });
+
+
+
+    $(document).ready(function () {
+        $('input:text').each(function () {
+            $(this).attr('enable', true);
+        });
+
+        $("[id$='Responsible_Personnel']").change(function () {
+            var taxText = $("#Responsible_Personnel option:selected").text();;
+            $("#emp").val(taxText);
+        })
+        $("[id$='SubDepartment']").change(function () {
+            var taxText = $("#SubDepartment option:selected").text();;
+            $("#subdeprt").val(taxText);
+        })
+        $("[id$='RequestType']").change(function () {
+            var taxText = $("#RequestType option:selected").text();;
+            $("#type").val(taxText);
+        })
+        $("[id$='ToDept']").change(function () {
+            var taxText = $("#ToDept option:selected").text();;
+            $("#subidto").val(taxText);
+        })
+
+    });
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

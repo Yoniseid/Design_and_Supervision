@@ -1,0 +1,156 @@
+﻿          
+
+    <div class="row" style="background-color:aliceblue">
+
+        <div class="col-md-12">
+            <div class="panel panel-primary list-panel" id="list-panel">
+                <div class="panel-heading list-panel-heading">
+                    <p>
+                        @if (Convert.ToString(Session["role"]) == "Admin" || Convert.ToString(Session["role"]) == "AdminUser")
+                        {
+
+                                    @Html.ActionLink("Assign New Peronnel", "Create", null, new { @class = "btn btn-primary" })
+                        }
+                    </p>
+                    <h1 class="panel-title list-panel-title">Assigned Teams</h1>
+                </div>
+                <div class="panel-body">
+
+                    <div class="col-md-12">
+                        <div class="panel panel-primary list-panel" id="list-panel">
+                            <div class="panel-heading list-panel-heading">
+                                <h1 class="panel-title list-panel-title">Assigned Teams</h1>
+                            </div>
+                            <div class="panel-body">
+
+
+                                <table id="example2" class="display table nowrap table-bordered" style="width:100%; border-collapse:separate; border-spacing:5px 0;">
+                                    <thead class="thead-dark">
+                                        <tr>
+
+                                            <th data-priority="1" style="background-color:lightgray;color: #000000">
+                                                Assigned Personnel
+                                            </th>
+                                            <th data-priority="2" style="background-color:lightgray;color: #000000">
+                                                Assigned Team
+                                            </th>
+                                            <th data-priority="3" style="background-color:lightgray;color: #000000">
+                                                Date Of Assign
+                                            </th>
+                                            <th data-priority="4" style="background-color:lightgray;color: #000000">
+                                                Deadline
+                                            </th>
+                                            <th data-priority="5" style="background-color:lightgray;color: #000000">
+                                                Attachment
+                                            </th>
+
+                                            <th data-priority="11">
+                                                Remark
+                                            </th>
+                                            <th data-priority="12" style="background-color:lightgray;color: #000000">
+                                                Finalized Date
+                                            </th>
+                                            <th data-priority="8">
+                                                Approved
+                                            </th>
+
+                                            <th data-priority="9">&nbsp;</th>
+                                            <th data-priority="10">&nbsp;</th>
+
+
+                                        </tr>
+
+                                    </thead>
+
+                                    <tbody>
+                                        @foreach (var item in ViewData.Model)
+                                        {
+
+                                            <tr style='color: black;'>
+                                                <td>@item["Responsible_Personnel"]</td>
+                                                <td>@item["AssignedTeam"]</td>
+                                                <td>@item["DateOfAssign"].ToShortDateString()</td>
+                                                <td>@item["initialdeadlinedate"].ToShortDateString()</td>
+                                                <td><a href="~/Admin/DownloadFile?filePath=@item["Attachment"]">Download</a> </td>
+                                                <td>@item["Remark"]</td>
+                                                <td>@item["FinalizedDate"]</td>
+                                                <td>@item["ApprovedorRejected"]</td>
+                                                <td style="padding:10px 0;">
+
+                                                    @if (Session["role"].ToString() == "Admin" || Convert.ToInt32(Session["EmpID"]) == item["EmployeeId"] || Convert.ToInt32(Session["EmpID"]) == item["ReceiverId"])
+                                                    {
+                                                        @Html.ActionLink("Edit", "Edit", new { id = item["id"] }, new { @class = "btn btn-success float-left" })
+                                                    }
+                                                    else
+                                                    {
+                                                        
+                                                    }
+
+                                                    </td>
+                                                <td>
+                                                    @if (Session["role"].ToString() == "Admin" || Convert.ToInt32(Session["EmpID"]) == item["ReceiverId"])
+                                                    {
+                                                        @Html.ActionLink("Delete", "Delete", new { id = item["id"] }, new { @class = "btn btn-danger float-left", onclick = "return confirm(' Are you sure you want to delete this record?' );" })
+                                                    }
+                                                    </td>
+
+
+                                            </tr>
+                                        }
+
+                                    </tbody>
+                                </table>
+
+
+                            </div>
+                        </div>
+                        @if (Session["role"].ToString() == "Admin")
+                        {
+
+
+                            @Html.ActionLink("Back to Tender List", "Tender", "Index", new { Status = "Active", DepId = 0 }, null)
+
+                        }
+                        else
+                        {
+                            @Html.ActionLink("Back to Tender List", "Tender", "Index", new { Status = "Active", DepId = Session["SubDepartmentID"] }, null)
+                        }
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        @section Scripts
+{
+
+
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $('#example2').DataTable({
+                        "scrollY": 500,
+                        "scrollX": true,
+                        "responsive": true,
+
+                        "columnDefs": [
+                            { responsivePriority: 1 },
+                            { responsivePriority: 2 },
+                            { responsivePriority: 3 },
+                            { responsivePriority: 4 },
+                            { responsivePriority: 5 },
+                            { responsivePriority: 6 },
+                            { responsivePriority: 7 },
+                            { responsivePriority: 8 },
+                            { responsivePriority: 9 }
+
+
+                        ]
+
+                    });
+                });
+
+            </script>
+
+        }
+
+

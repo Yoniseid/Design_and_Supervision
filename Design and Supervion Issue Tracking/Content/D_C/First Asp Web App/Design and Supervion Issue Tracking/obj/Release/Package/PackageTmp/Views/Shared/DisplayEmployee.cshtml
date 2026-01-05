@@ -1,0 +1,10 @@
+﻿@model Design_and_Supervion_Issue_Tracking.Models.ModelEmployee
+<option value="">--Select Employee--</option>
+@if (ViewBag.Selectedemployee != null)
+{
+    foreach (var item in ViewBag.Selectedemployee)
+    {
+        <option value="@item.Value">@item.Text</option>
+    }
+}
+

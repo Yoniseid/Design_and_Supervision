@@ -1,0 +1,100 @@
+﻿
+
+<div class="row" style="background-color:aliceblue">
+
+    <div class="col-md-12">
+        <div class="panel panel-primary list-panel" id="list-panel">
+            <div class="panel-heading list-panel-heading">
+                <h1 class="panel-title list-panel-title">List Of SLA Letters</h1>
+            </div>
+            <div class="panel-body">
+
+                <div class="col-md-12">
+                    <div class="panel panel-primary list-panel" id="list-panel">
+                        <div class="panel-heading list-panel-heading">
+                            <h1 class="panel-title list-panel-title">SLA Letter</h1>
+                        </div>
+                        <div class="panel-body">
+
+
+                            <table id="example2" class="display table nowrap table-bordered" style="width:100%; border-collapse:separate; border-spacing:5px 0;">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th data-priority="1" style="background-color:lightgray;color: #000000">
+                                            Project
+                                        </th>
+                                        <th data-priority="1" style="background-color:lightgray;color: #000000">
+                                            Letter Number
+                                        </th>
+                                        <th data-priority="2" style="background-color:lightgray;color: #000000">
+                                            Letter Date
+                                        </th>
+                                        <th data-priority="2" style="background-color:lightgray;color: #000000">
+                                            Sent To
+                                        </th>
+
+                                        <th data-priority="5" style="background-color:lightgray;color: #000000">
+                                            Attachment
+                                        </th>
+
+
+                                        <th data-priority="9">&nbsp;</th>
+              
+
+
+
+                                    </tr>
+
+                                </thead>
+                                <tbody>
+
+                                <tbody>
+                                    @foreach (var item in ViewData.Model)
+                                    {
+
+                                        <tr>
+                                            <td>@item["ProjectTitle"]</td>
+                                            <td>@item["SLAnumber"]</td>
+                                            <td>@item["SentTo"]</td>
+                                            <td>@item["dateofsigned"]</td>
+                                            <td><a href="~/Tender/DownloadFile?filePath=@item["attachement"]">Download</a> </td>
+
+                                            <td>@Html.ActionLink("Send Commitement", "Index", "Commitement", new { Sid = @item["id"] }, new { @class = "btn btn-warning float-left" })</td>
+
+
+
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

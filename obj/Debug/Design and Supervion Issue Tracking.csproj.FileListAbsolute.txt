@@ -1,0 +1,152 @@
+E:\First Asp Web App\Design and Supervion Issue Tracking\bin\Design and Supervion Issue Tracking.dll.config
+E:\First Asp Web App\Design and Supervion Issue Tracking\bin\Design and Supervion Issue Tracking.dll
+E:\First Asp Web App\Design and Supervion Issue Tracking\bin\Design and Supervion Issue Tracking.pdb
+E:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\csc.exe
+E:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\csc.exe.config
+E:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\csc.rsp
+E:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\csi.exe
+E:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\csi.exe.config
+E:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\csi.rsp
+E:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+E:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+E:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+E:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+E:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\Microsoft.Managed.Core.targets
+E:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\System.AppContext.dll
+E:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\System.Collections.Immutable.dll
+E:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\System.Console.dll
+E:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+E:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\System.Diagnostics.StackTrace.dll
+E:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\System.IO.Compression.dll
+E:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\System.IO.FileSystem.dll
+E:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\System.IO.FileSystem.Primitives.dll
+E:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\System.IO.Pipes.AccessControl.dll
+E:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\System.IO.Pipes.dll
+E:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\System.Reflection.Metadata.dll
+E:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\System.Security.AccessControl.dll
+E:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\System.Security.Claims.dll
+E:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+E:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\System.Security.Cryptography.Encoding.dll
+E:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\System.Security.Cryptography.Primitives.dll
+E:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+E:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\System.Security.Principal.Windows.dll
+E:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\System.Text.Encoding.CodePages.dll
+E:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\System.ValueTuple.dll
+E:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\System.Xml.ReaderWriter.dll
+E:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\System.Xml.XmlDocument.dll
+E:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\System.Xml.XPath.dll
+E:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\System.Xml.XPath.XDocument.dll
+E:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\vbc.exe
+E:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\vbc.exe.config
+E:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\vbc.rsp
+E:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\VBCSCompiler.exe
+E:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\VBCSCompiler.exe.config
+E:\First Asp Web App\Design and Supervion Issue Tracking\bin\Antlr3.Runtime.dll
+E:\First Asp Web App\Design and Supervion Issue Tracking\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\First Asp Web App\Design and Supervion Issue Tracking\bin\Microsoft.Web.Infrastructure.dll
+E:\First Asp Web App\Design and Supervion Issue Tracking\bin\Newtonsoft.Json.dll
+E:\First Asp Web App\Design and Supervion Issue Tracking\bin\System.Web.Helpers.dll
+E:\First Asp Web App\Design and Supervion Issue Tracking\bin\System.Web.Mvc.dll
+E:\First Asp Web App\Design and Supervion Issue Tracking\bin\System.Web.Optimization.dll
+E:\First Asp Web App\Design and Supervion Issue Tracking\bin\System.Web.Razor.dll
+E:\First Asp Web App\Design and Supervion Issue Tracking\bin\System.Web.WebPages.Deployment.dll
+E:\First Asp Web App\Design and Supervion Issue Tracking\bin\System.Web.WebPages.dll
+E:\First Asp Web App\Design and Supervion Issue Tracking\bin\System.Web.WebPages.Razor.dll
+E:\First Asp Web App\Design and Supervion Issue Tracking\bin\WebGrease.dll
+E:\First Asp Web App\Design and Supervion Issue Tracking\bin\System.Web.Helpers.xml
+E:\First Asp Web App\Design and Supervion Issue Tracking\bin\System.Web.Mvc.xml
+E:\First Asp Web App\Design and Supervion Issue Tracking\bin\System.Web.Optimization.xml
+E:\First Asp Web App\Design and Supervion Issue Tracking\bin\System.Web.Razor.xml
+E:\First Asp Web App\Design and Supervion Issue Tracking\bin\System.Web.WebPages.xml
+E:\First Asp Web App\Design and Supervion Issue Tracking\bin\System.Web.WebPages.Deployment.xml
+E:\First Asp Web App\Design and Supervion Issue Tracking\bin\System.Web.WebPages.Razor.xml
+E:\First Asp Web App\Design and Supervion Issue Tracking\bin\Newtonsoft.Json.xml
+E:\First Asp Web App\Design and Supervion Issue Tracking\bin\Antlr3.Runtime.pdb
+E:\First Asp Web App\Design and Supervion Issue Tracking\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\First Asp Web App\Design and Supervion Issue Tracking\obj\Debug\Design and Supervion Issue Tracking.csprojAssemblyReference.cache
+E:\First Asp Web App\Design and Supervion Issue Tracking\obj\Debug\Design and Supervion Issue Tracking.csproj.CoreCompileInputs.cache
+E:\First Asp Web App\Design and Supervion Issue Tracking\obj\Debug\Design and Supervion Issue Tracking.csproj.CopyComplete
+E:\First Asp Web App\Design and Supervion Issue Tracking\obj\Debug\Design and Supervion Issue Tracking.dll
+E:\First Asp Web App\Design and Supervion Issue Tracking\obj\Debug\Design and Supervion Issue Tracking.pdb
+D:\First Asp Web App\Design and Supervion Issue Tracking\bin\Design and Supervion Issue Tracking.dll.config
+D:\First Asp Web App\Design and Supervion Issue Tracking\bin\Design and Supervion Issue Tracking.dll
+D:\First Asp Web App\Design and Supervion Issue Tracking\bin\Design and Supervion Issue Tracking.pdb
+D:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\csc.exe
+D:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\csc.exe.config
+D:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\csc.rsp
+D:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\csi.exe
+D:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\csi.exe.config
+D:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\csi.rsp
+D:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\Microsoft.Managed.Core.targets
+D:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\System.AppContext.dll
+D:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\System.Collections.Immutable.dll
+D:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\System.Console.dll
+D:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+D:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\System.Diagnostics.StackTrace.dll
+D:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\System.IO.Compression.dll
+D:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\System.IO.FileSystem.dll
+D:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\System.IO.Pipes.AccessControl.dll
+D:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\System.IO.Pipes.dll
+D:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\System.Reflection.Metadata.dll
+D:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\System.Security.AccessControl.dll
+D:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\System.Security.Claims.dll
+D:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+D:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\System.Security.Cryptography.Encoding.dll
+D:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\System.Security.Cryptography.Primitives.dll
+D:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+D:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\System.Security.Principal.Windows.dll
+D:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\System.Text.Encoding.CodePages.dll
+D:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\System.ValueTuple.dll
+D:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\System.Xml.ReaderWriter.dll
+D:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\System.Xml.XmlDocument.dll
+D:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\System.Xml.XPath.dll
+D:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\System.Xml.XPath.XDocument.dll
+D:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\vbc.exe
+D:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\vbc.exe.config
+D:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\vbc.rsp
+D:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\VBCSCompiler.exe
+D:\First Asp Web App\Design and Supervion Issue Tracking\bin\roslyn\VBCSCompiler.exe.config
+D:\First Asp Web App\Design and Supervion Issue Tracking\bin\Antlr3.Runtime.dll
+D:\First Asp Web App\Design and Supervion Issue Tracking\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\First Asp Web App\Design and Supervion Issue Tracking\bin\Microsoft.Web.Infrastructure.dll
+D:\First Asp Web App\Design and Supervion Issue Tracking\bin\Newtonsoft.Json.dll
+D:\First Asp Web App\Design and Supervion Issue Tracking\bin\System.Web.Helpers.dll
+D:\First Asp Web App\Design and Supervion Issue Tracking\bin\System.Web.Mvc.dll
+D:\First Asp Web App\Design and Supervion Issue Tracking\bin\System.Web.Optimization.dll
+D:\First Asp Web App\Design and Supervion Issue Tracking\bin\System.Web.Razor.dll
+D:\First Asp Web App\Design and Supervion Issue Tracking\bin\System.Web.WebPages.Deployment.dll
+D:\First Asp Web App\Design and Supervion Issue Tracking\bin\System.Web.WebPages.dll
+D:\First Asp Web App\Design and Supervion Issue Tracking\bin\System.Web.WebPages.Razor.dll
+D:\First Asp Web App\Design and Supervion Issue Tracking\bin\WebGrease.dll
+D:\First Asp Web App\Design and Supervion Issue Tracking\bin\System.Web.Helpers.xml
+D:\First Asp Web App\Design and Supervion Issue Tracking\bin\System.Web.Mvc.xml
+D:\First Asp Web App\Design and Supervion Issue Tracking\bin\System.Web.Optimization.xml
+D:\First Asp Web App\Design and Supervion Issue Tracking\bin\System.Web.Razor.xml
+D:\First Asp Web App\Design and Supervion Issue Tracking\bin\System.Web.WebPages.xml
+D:\First Asp Web App\Design and Supervion Issue Tracking\bin\System.Web.WebPages.Deployment.xml
+D:\First Asp Web App\Design and Supervion Issue Tracking\bin\System.Web.WebPages.Razor.xml
+D:\First Asp Web App\Design and Supervion Issue Tracking\bin\Newtonsoft.Json.xml
+D:\First Asp Web App\Design and Supervion Issue Tracking\bin\Antlr3.Runtime.pdb
+D:\First Asp Web App\Design and Supervion Issue Tracking\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\First Asp Web App\Design and Supervion Issue Tracking\obj\Debug\Design and Supervion Issue Tracking.csproj.CoreCompileInputs.cache
+D:\First Asp Web App\Design and Supervion Issue Tracking\obj\Debug\Design and Supervion Issue Tracking.csproj.CopyComplete
+D:\First Asp Web App\Design and Supervion Issue Tracking\obj\Debug\Design and Supervion Issue Tracking.dll
+D:\First Asp Web App\Design and Supervion Issue Tracking\obj\Debug\Design and Supervion Issue Tracking.pdb
+D:\First Asp Web App\Design and Supervion Issue Tracking\obj\Debug\Design and Supervion Issue Tracking.csprojAssemblyReference.cache

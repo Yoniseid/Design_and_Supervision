@@ -1,0 +1,197 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+@model Design_and_Supervion_Issue_Tracking.Models.ModelLegal
+
+<br />
+
+<div class="panel panel-primary">
+    <div class="panel-heading"><h2>Send To Legal and Tendering </h2></div>
+    <div class="panel-body">
+
+        @using (Html.BeginForm("Create", "Legal", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+
+
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group row">
+                <div class="col-md-4 mb-0">
+
+                    @Html.LabelFor(model => model.RequestType, "Request Type ")
+                    @Html.DropDownList("RequestType", new List<SelectListItem>
+          {
+
+                 new SelectListItem {Text="contractual Proposal", Value="contractual Proposal"},
+                new SelectListItem {Text="Contractual Agreement", Value="Contractual Agreement"}
+
+
+
+          }, "--Select---", new { @class = "form-control", @data_val = "true", @data_val_required = "Request Type is reqired" })
+                    <div class="valid-feedback">
+                        <span class="danger" data-valmsg-for="RequestType" data-valmsg-replace="true"></span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-group row">
+                @Html.LabelFor(model => model.attachement, "Attachement ", new { @class = "col-sm-12 col-md-3 col-lg-2 col-form-label" })
+                <div class="col-sm-12 col-md-9 col-lg-10">
+                    @Html.TextBox("file", null, new { @class = "form-control", @type = "file" })
+                    <div class="valid-feedback">
+                        <span class="has-error" data-valmsg-for="file" data-valmsg-replace="true"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-4 mb-0">
+                    @Html.Label("Department Head", "Responsible Personnel ")
+                    <div class="valid-feedback">
+                        @if (ViewBag.Responsible_Personnel != null)
+                        {
+                            @Html.DropDownListFor(model => model.Responsible_Personnel, ViewBag.Responsible_Personnel as SelectList, "--Select--", new { @class = "form-control" })
+                        }
+                        @Html.ValidationMessageFor(model => model.Responsible_Personnel, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+            </div>
+
+
+
+            <div class="form-group row">
+                @Html.LabelFor(model => model.Remark, "Remark ", new { @class = "col-sm-12 col-md-3 col-lg-2 col-form-label" })
+                <div class="col-sm-12 col-md-9 col-lg-10">
+                    @Html.TextAreaFor(model => model.Remark, new { @class = "form-control", @rows = "6" })
+                    @Html.ValidationMessageFor(model => model.Remark, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group row text-right">
+                <div class="col-sm-12 col-md-9 col-lg-10">
+                    <input type="submit" value="Submit Form" class="btn btn-primary" />
+                </div>
+            </div>
+            <div>
+
+                <input id="Responsibleid" name="Responsibleid" type="hidden" />
+                <input id="ReqType" name="ReqType" type="hidden" />
+
+
+            </div>
+
+
+        }
+
+    </div>
+</div>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script type="text/javascript">
+     $(document).ready(function () {
+        $("#RequestType").change(function () {
+            var ToDepId = 200;
+            debugger
+            $.ajax({
+                type: "post",
+                url: "/Tender/GetSelectedEmployee?SubDepartment=" + ToDepId,
+                contentType: "html",
+                success: function (response) {
+                    debugger
+                    $("#Responsible_Personnel").empty();
+                    $("#Responsible_Personnel").append(response);
+                }
+            })
+
+        })
+
+    });
+
+
+
+    $(document).ready(function () {
+        $('input:text').each(function () {
+            $(this).attr('enable', true);
+        });
+
+
+        $("[id$='Responsible_Personnel']").change(function () {
+            var taxText = $("#Responsible_Personnel option:selected").text();;
+            $("#Responsibleid").val(taxText);
+        })
+
+          $("[id$='RequestType']").change(function () {
+            var taxText = $("#RequestType option:selected").text();;
+            $("#ReqType").val(taxText);
+          })
+
+
+            
+        
+
+    });
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,178 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+@model Design_and_Supervion_Issue_Tracking.Models.ModelProjectInitiation
+
+<br />
+
+<div class="panel panel-primary">
+    <div class="panel-heading"><h2>Project Initiation </h2></div>
+    <div class="panel-body">
+
+        @using (Html.BeginForm("Create", "ProjectInitiation", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+
+
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group row">
+
+            <div class="col-md-4 mb-0">
+                @Html.LabelFor(model => model.projectno, "Project ")
+                <div class="valid-feedback">
+                    @if (ViewBag.projectno != null)
+                    {
+                        @Html.DropDownListFor(model => model.projectno, ViewBag.projectno as SelectList, "--Select--", new { @class = "form-control" })
+                    }
+                    @Html.ValidationMessageFor(model => model.projectno, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-md-4 mb-0">
+                @Html.LabelFor(model => model.clientno, "Client ")
+                <div class="valid-feedback">
+                    @if (ViewBag.clientno != null)
+                    {
+                        @Html.DropDownListFor(model => model.clientno, ViewBag.clientno as SelectList, "--Select--", new { @class = "form-control" })
+                    }
+                    @Html.ValidationMessageFor(model => model.clientno, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-md-4 mb-0">
+                @Html.LabelFor(model => model.ProjectManagerid, "Project Manager ")
+                <div class="valid-feedback">
+                    @if (ViewBag.ProjectManagerid != null)
+                    {
+                        @Html.DropDownListFor(model => model.ProjectManagerid, ViewBag.ProjectManagerid as SelectList, "--Select--", new { @class = "form-control" })
+                    }
+                    @Html.ValidationMessageFor(model => model.ProjectManagerid, "", new { @class = "text-danger" })
+                </div>
+            </div>
+         </div>
+        <div class="form-group row">
+            <div class="col-md-4 mb-0">
+                @Html.LabelFor(model => model.ResponsibleDeptId, "Department ")
+                <div class="valid-feedback">
+                    @if (ViewBag.ResponsibleDeptId != null)
+                    {
+                        @Html.DropDownListFor(model => model.ResponsibleDeptId, ViewBag.ResponsibleDeptId as SelectList, "--Select--", new { @class = "form-control" })
+                    }
+                    @Html.ValidationMessageFor(model => model.ResponsibleDeptId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-md-4 mb-0">
+                @Html.LabelFor(model => model.BranchId, "Branch ")
+                <div class="valid-feedback">
+                    @if (ViewBag.BranchId != null)
+                    {
+                        @Html.DropDownListFor(model => model.BranchId, ViewBag.BranchId as SelectList, "--Select--", new { @class = "form-control" })
+                    }
+                    @Html.ValidationMessageFor(model => model.BranchId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+            <div class="form-group row">
+                @Html.LabelFor(model => model.AcceptanceLetterno, "Acceptance Letter ", new { @class = "col-sm-12 col-md-3 col-lg-2 col-form-label" })
+                <div class="col-sm-12 col-md-9 col-lg-10">
+                    @if (ViewBag.AcceptanceLetterno != null)
+                    {
+                        @Html.DropDownListFor(model => model.AcceptanceLetterno, ViewBag.AcceptanceLetterno as SelectList, "--Select--", new { @class = "form-control" })
+                    }
+                    @Html.ValidationMessageFor(model => model.AcceptanceLetterno, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group row">
+                @Html.LabelFor(model => model.kickoffmeetingLetterno, "Kickoff Meeting Letter Number: ", new { @class = "col-sm-12 col-md-3 col-lg-2 col-form-label" })
+                <div class="col-sm-12 col-md-9 col-lg-10">
+                    @if (ViewBag.kickoffmeetingLetterno != null)
+                    {
+                        @Html.DropDownListFor(model => model.kickoffmeetingLetterno, ViewBag.kickoffmeetingLetterno as SelectList, "--Select--", new { @class = "form-control" })
+                    }
+                    @Html.ValidationMessageFor(model => model.kickoffmeetingLetterno, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+
+            <div class="form-group row">
+                <div class="col-md-4 mb-0">
+                    @Html.LabelFor(model => model.kickoffmeetingdate, "Kickoff Meeting Date ")
+                    <input id="kickoffmeetingdate" name="kickoffmeetingdate" type="date" class="form-control" />
+                    <div class="valid-feedback">
+                        @Html.ValidationMessageFor(model => model.kickoffmeetingdate, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="form-group row">
+                @Html.LabelFor(model => model.kickoffmeetingminute, "Kickoff Meeting Minute ", new { @class = "col-sm-12 col-md-3 col-lg-2 col-form-label" })
+                <div class="col-sm-12 col-md-9 col-lg-10">
+
+                    @Html.TextBox("file", null, new { @class = "form-control", @type = "file", @data_val = "true", @data_val_required = "Letter Attachement is reqired" })
+                    <div class="valid-feedback">
+                        <span class="has-error" data-valmsg-for="file" data-valmsg-replace="true"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                @Html.LabelFor(model => model.remark, "Remark ", new { @class = "col-sm-12 col-md-3 col-lg-2 col-form-label" })
+                <div class="col-sm-12 col-md-9 col-lg-10">
+                    @Html.TextAreaFor(model => model.remark, new { @class = "form-control", @rows = "6" })
+                    @Html.ValidationMessageFor(model => model.remark, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group row text-right">
+                <div class="col-sm-12 col-md-9 col-lg-10">
+                    <input type="submit" value="Submit Form" class="btn btn-primary" />
+                </div>
+            </div>
+            <div>
+                <input id="projectid" name="projectid" type="hidden" />
+                <input id="ResponsibleDepartmentid" name="ResponsibleDepartmentid" type="hidden" />
+                <input id="Stat" name="Stat" type="hidden" />
+                <input id="Sevir" name="Sevir" type="hidden" />
+                <input id="BId" name="BId" type="hidden" />
+                <input id="DepHID" name="DepHID" type="hidden" />
+                <input id="IssID" name="IssID" type="hidden" />
+
+
+            </div>
+
+
+            }
+
+        </div>
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

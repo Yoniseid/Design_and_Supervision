@@ -1,0 +1,251 @@
+﻿@model Design_and_Supervion_Issue_Tracking.Models.ModelTenderDetail
+
+
+<div class="panel panel-primary">
+    <div class="panel-heading"><h2>Edit Assigned Personnel</h2></div>
+    <div class="panel-body">
+        @Html.Raw(ViewBag.msg1)
+
+        @using (Html.BeginForm("Edit", "TenderDetail", FormMethod.Post,
+            new { enctype = "multipart/form-data" }))
+
+        {
+            @Html.AntiForgeryToken()
+
+            <input id="SubDID" name="SubDID" value="@ViewBag.team"  type="hidden"/>
+            <input id="EmpId" name="EmpId" value="@ViewBag.Personnel" type="hidden" />
+
+
+            <div class="form-horizontal">
+
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.id)
+
+
+                <div class="form-group row">
+                    @Html.LabelFor(model => model.AssignedTeam, "Team Name: ", new { @class = "col-sm-12 col-md-3 col-lg-2 col-form-label" })
+                    <div class="col-sm-12 col-md-9 col-lg-10">
+                        @Html.DropDownListFor(model => model.AssignedTeam, ViewBag.AssignedTeam as SelectList, "--Select--", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.AssignedTeam, "", new { @class = "text-danger" })
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+                    @Html.LabelFor(model => model.Responsible_Personnel, "Employee Name ", new { @class = "col-sm-12 col-md-3 col-lg-2 col-form-label" })
+                    <div class="col-sm-12 col-md-9 col-lg-10">
+                        @Html.DropDownListFor(model => model.Responsible_Personnel, ViewBag.Responsible_Personnel as SelectList, "--Select--", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Responsible_Personnel, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group row">
+                    @Html.LabelFor(model => model.initialdeadlinedate, "Initial Deadline Date ", new { @class = "col-sm-12 col-md-3 col-lg-2 col-form-label" })
+                    <div class="col-sm-12 col-md-9 col-lg-10">
+                        @Html.EditorFor(model => model.initialdeadlinedate, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.initialdeadlinedate, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                <div class="form-group row">
+                    @Html.LabelFor(model => model.Attachment, htmlAttributes: new { @class = "col-sm-12 col-md-3 col-lg-2 col-form-label" })
+                    <div class="col-sm-12 col-md-9 col-lg-10">
+                        @Html.HiddenFor(model => model.Attachment, new { htmlAttributes = new { @class = "form-control" } })
+                        <img src="@Url.Content(Session["imgpath"].ToString())" width="50" height="50" />
+                        <input type="file" accept=".jpg,.jpeg,.png,jpe" name="file" id="file" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    @Html.LabelFor(model => model.ResponseAttachement, htmlAttributes: new { @class = "col-sm-12 col-md-3 col-lg-2 col-form-label" })
+                    <div class="col-sm-12 col-md-9 col-lg-10">
+                        @Html.HiddenFor(model => model.ResponseAttachement, new { htmlAttributes = new { @class = "form-control" } })
+                        <img src="@Url.Content(Session["Response"].ToString())" width="50" height="50" />
+                        <input type="file" accept=".jpg,.jpeg,.png,jpe" name="file" id="file" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-4 mb-0">
+                        @Html.LabelFor(model => model.Status, "Status ")
+                        @Html.DropDownList("Status", new List<SelectListItem>
+              {
+
+                       new SelectListItem {Text="In Progress", Value="In Progress"},
+                       new SelectListItem {Text="Complete Send For Approval", Value="Complete Send For Approval"},
+
+
+
+              }, "--Select---", new { @class = "form-control", @data_val = "true", @data_val_required = "Status is reqired" })
+                        <div class="valid-feedback">
+                            <span class="danger" data-valmsg-for="Status" data-valmsg-replace="true"></span>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-4 mb-0">
+                        @if (Convert.ToInt32(Session["EmpId"]) != Convert.ToInt32(ViewBag.EmpId))
+                        {
+                            @Html.HiddenFor(model => model.ApprovedorRejected)
+                            @Html.Label("This Field Can Not Be Changed By this user")
+                        }
+                        else
+                        {
+                            @Html.LabelFor(model => model.ApprovedorRejected, "Approved ")
+                            @Html.DropDownList("Approved", new List<SelectListItem>
+                            {
+
+                           new SelectListItem {Text="Approved", Value="Approved"},
+                           new SelectListItem {Text="Not Complete", Value="Not Complete"},
+
+                            }, "--Select---", new { @class = "form-control", @data_val = "true", @data_val_required = "Approval is reqired" })
+
+
+                        }
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    @Html.LabelFor(model => model.Remark, htmlAttributes: new { @class = "col-sm-12 col-md-3 col-lg-2 col-form-label" })
+                    <div class="col-sm-12 col-md-9 col-lg-10">
+                        @Html.TextAreaFor(model => model.Remark, new { htmlAttributes = new { @class = "form-control", @cols = 80, @rows = 10 } })
+                        @Html.ValidationMessageFor(model => model.Remark, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                    </div>
+                </div>
+
+
+
+              
+
+            </div>
+        }
+
+</div>
+<div>
+    @Html.ActionLink("Back to Cause List", "AdminHome", "Admin", new { id = Session["EmpID"], subid = Session["SubDepartmentID"] }, null)
+</div>
+
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script type="text/javascript">
+
+           $(document).ready(function () {
+        $("#SubDepartment").change(function () {
+            var DepId = $(this).val();
+            debugger
+            $.ajax({
+                type: "post",
+                url: "/IssueDetails/GetSelectedEmployee?SubDepartment=" + DepId,
+                contentType: "html",
+                success: function (response) {
+                    debugger
+                    $("#Responsible_Personnel").empty();
+                    $("#Responsible_Personnel").append(response);
+                }
+            })
+
+        })
+
+     });
+
+    $(document).ready(function () {
+        $("#Responsible_Personnel").change(function () {
+            var Id = $(this).val();
+            debugger
+            $.ajax({
+                type: "post",
+                url: "/IssueDetails/GetSelectedEmployee?Id=" + Id,
+                contentType: "html",
+                success: function (response) {
+                    debugger
+                    $("#Responsible_Position").empty();
+                    $("#Responsible_Position").append(response);
+                }
+            })
+
+        })
+
+    });
+
+    $(document).ready(function () {
+        $('input:text').each(function () {
+            $(this).attr('enable', true);
+        });
+
+
+        $("[id$='ApprovedorRejected']").change(function () {
+            var taxText = $("#ApprovedorRejected option:selected").text();;
+            $("#Approve").val(taxText);
+        })
+        $("[id$='CurrentStatus']").change(function () {
+            var taxText = $("#CurrentStatus option:selected").text();;
+            $("#Selstatus").val(taxText);
+        })
+
+        $("[id$='AssignedTeam']").change(function () {
+            var taxText = $("#AssignedTeam option:selected").text();;
+            $("#SubDID").val(taxText);
+        })
+
+        $("[id$='Responsible_Position']").change(function () {
+            var taxText4 = $("#Responsible_Position option:selected").text();;
+            $("#SelPosition").val(taxText4);
+
+        })
+        $("[id$='Responsible_Personnel']").change(function () {
+            var taxText4 = $("#Responsible_Personnel option:selected").text();;
+            $("#EmpId").val(taxText4);
+
+        })
+        $("[id$='PercentDone']").change(function () {
+            var taxText4 = $("#PercentDone option:selected").text();;
+            $("#Pstatus").val(taxText4);
+
+        })
+
+        $("[id$='status']").change(function () {
+            var taxText4 = $("#status option:selected").text();;
+            $("#Stat").val(taxText4);
+
+        })
+
+
+    });
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,300 @@
+﻿@model Design_and_Supervion_Issue_Tracking.Models.ModelRequest
+
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<link href="~/Scripts/jquery-ui.min.css" rel="stylesheet" />
+
+<div class="panel panel-primary">
+    <div class="panel-heading"><h2>New Request </h2></div>
+    <div class="panel-body">
+
+        @using (Html.BeginForm("Create", "Request", FormMethod.Post,
+            new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group row">
+                @Html.LabelFor(model => model.Sentto, "Sent To ", new { @class = "col-sm-12 col-md-3 col-lg-2 col-form-label" })
+
+                <div class="col-sm-12 col-md-9 col-lg-10">
+                    <input type="checkbox" name="Internal" id="Internal" value="Internal">Sent To Internal:
+                    @if (ViewBag.ToDepId != null)
+                    {
+                        @Html.DropDownList("ToDepId", (IEnumerable<SelectListItem>)ViewBag.ToDepId, "--Select--", new { @class = "hidden" })
+                        <br />
+                    }
+
+                </div>
+                <div class="col-sm-12 col-md-9 col-lg-10">
+                    <input type="checkbox" name="ClientE" id="ClientE" value="Internal">Sent To Client:
+                    @if (ViewBag.ClientId != null)
+                    {
+                        @Html.DropDownList("ClientId", (IEnumerable<SelectListItem>)ViewBag.ClientId, "--Select--", new { @class = "hidden" })
+                        <br />
+                        <label>Sent To Other Coorporate Sectors</label>
+                        @Html.TextBoxFor(model => model.Sentto, "", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Sentto, "", new { @class = "text-danger" })
+                    }
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-4 mb-0">
+                    @Html.LabelFor(model => model.RequestType, "Request Mode ")
+                    @Html.DropDownList("RequestMode", new List<SelectListItem>
+          {
+
+                    new SelectListItem {Text="Origional", Value="Origional"},
+                   new SelectListItem {Text="Amendement", Value="Amendement"}
+
+
+          }, "--Select---", new { @class = "form-control", @data_val = "true", @data_val_required = "Request Mode is reqired" })
+                    <div class="valid-feedback">
+                        <span class="danger" data-valmsg-for="RequestType" data-valmsg-replace="true"></span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-group row">
+                <div class="col-md-4 mb-0">
+                    @Html.LabelFor(model => model.RequestType, "Request Type ")
+                    @Html.DropDownList("RequestType", new List<SelectListItem>
+          {
+
+                    new SelectListItem {Text="Proffesional Assistance", Value="Proffesional Assistance"},
+                   new SelectListItem {Text="Technical/Fiancial Proposal", Value="Technical/Fiancial Proposal"},
+                   new SelectListItem {Text="Service Level Agreement(SLA)", Value="Service Level Agreement(SLA)"},
+                   new SelectListItem {Text="Work Methodlology/Work Schedule/Man Month", Value="Work Methodlology/Work Schedule/Man Month"},
+                    new SelectListItem {Text="Others", Value="Others"}
+
+
+          }, "--Select---", new { @class = "form-control", @data_val = "true", @data_val_required = "Request Type is reqired" })
+                    <div class="valid-feedback">
+                        <span class="danger" data-valmsg-for="RequestType" data-valmsg-replace="true"></span>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="form-group row">
+
+                @Html.LabelFor(model => model.DeprtmentHead, "Department head ", new { @class = "col-sm-12 col-md-3 col-lg-2 col-form-label" })
+                <div class="col-sm-12 col-md-9 col-lg-10">
+
+
+                    @Html.DropDownListFor(model => model.DeprtmentHead, new SelectList(""), "--Select Employee--", new { @class = "form-control" })
+
+                    @Html.ValidationMessageFor(model => model.DeprtmentHead, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group row">
+                @Html.LabelFor(model => model.RequestAttachement, "Attachement ", new { @class = "col-sm-12 col-md-3 col-lg-2 col-form-label" })
+                <div class="col-sm-12 col-md-9 col-lg-10">
+                    <input type="file" value="-" name="file" id="file" class="form-control" />
+
+                </div>
+            </div>
+            <div class="form-group row">
+                @Html.LabelFor(model => model.RequestRemark, "Remark ", new { @class = "col-sm-12 col-md-3 col-lg-2 col-form-label" })
+                <div class="col-sm-12 col-md-9 col-lg-10">
+                    @Html.TextAreaFor(model => model.RequestRemark, new { @class = "form-control", @rows = "6" })
+                    @Html.ValidationMessageFor(model => model.RequestRemark, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group row text-right">
+                <div class="col-sm-12 col-md-9 col-lg-10">
+                    <input type="submit" value="Submit Form" class="btn btn-primary" />
+                </div>
+            </div>
+            <input id="subidfrom" name="subidfrom" type="hidden" />
+            <input id="subidto" name="subidto" type="hidden" />
+            <input id="type" name="type" type="hidden" />
+            <input id="head" name="head" value="" type="hidden" />
+
+
+        }
+
+    </div>
+    <div>
+
+    </div>
+</div>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")
+
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#ToDepId").change(function () {
+            var ToDepId = $(this).val();
+            debugger
+            $.ajax({
+                type: "post",
+                url: "/Tender/GetSelectedEmployee?SubDepartment=" + ToDepId,
+                contentType: "html",
+                success: function (response) {
+                    debugger
+                    $("#DeprtmentHead").empty();
+                    $("#DeprtmentHead").append(response);
+                }
+            })
+
+        })
+
+    });
+
+    
+        $('#Internal').click(function () {
+        if (this.checked) {
+            $("#ToDepId").removeAttr("class", "hidden")
+            $("#ToDepId").show('fast')
+        }
+                       
+        else {
+
+            $("#ToDepId").hide('fast')
+
+        }
+
+    });
+    
+            $('#ClientE').click(function () {
+        if (this.checked) {
+            $("#ClientId").removeAttr("class", "hidden")
+            $("#ClientId").show('fast')
+        }
+                       
+        else {
+
+            $("#ClientId").hide('fast')
+
+        }
+
+    });
+    $(document).ready(function () {
+        $('input:text').each(function () {
+            $(this).attr('enable', true);
+        });
+
+        $("[id$='ToDepId']").change(function () {
+            var taxText = $("#ToDepId option:selected").text();;
+            $("#Sentto").val(taxText);
+        })
+       $("[id$='ClientId']").change(function () {
+            var taxText = $("#ClientId option:selected").text();;
+            $("#Sentto").val(taxText);
+        })
+        $("[id$='DeprtmentHead']").change(function () {
+            var taxText = $("#DeprtmentHead option:selected").text();;
+            $("#head").val(taxText);
+        })
+        $("[id$='RequestType']").change(function () {
+            var taxText = $("#RequestType option:selected").text();;
+            $("#type").val(taxText);
+        })
+        $("[id$='ToDept']").change(function () {
+            var taxText = $("#ToDept option:selected").text();;
+            $("#subidto").val(taxText);
+        })
+
+    });
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

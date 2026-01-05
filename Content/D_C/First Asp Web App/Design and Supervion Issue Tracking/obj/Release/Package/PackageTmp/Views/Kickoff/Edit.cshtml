@@ -1,0 +1,146 @@
+﻿@model Design_and_Supervion_Issue_Tracking.Models.ModelKickoff
+
+
+<div class="panel panel-primary">
+    <div class="panel-heading"><h2>Edit Tender</h2></div>
+    <div class="panel-body">
+        @Html.Raw(ViewBag.msg1);
+
+        @using (Html.BeginForm("Edit", "Kickoff", FormMethod.Post,
+            new { enctype = "multipart/form-data" }))
+
+        {
+            @Html.AntiForgeryToken()
+
+            <input id="pNo" name="pNo" value="@ViewBag.SelectedProject" type="hidden" />
+
+              
+            <div class="form-horizontal">
+
+
+
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.id)
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ProjectName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @if (ViewBag.ProjectName != null)
+                        {
+                            @Html.DropDownListFor(model => model.ProjectName, ViewBag.ProjectName as SelectList, "--Select--", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.ProjectName, "", new { @class = "text-danger" })
+                        }
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.KickoffmeetingLetterno, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.KickoffmeetingLetterno, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.KickoffmeetingLetterno, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                <div class="form-group row">
+                    @Html.LabelFor(model => model.attachement, htmlAttributes: new { @class = "col-sm-12 col-md-3 col-lg-2 col-form-label" })
+                    <div class="col-md-4 mb-0">
+                        @Html.HiddenFor(model => model.attachement, new { htmlAttributes = new { @class = "form-control" } })
+                        <img src="@Url.Content(Session["attachement"].ToString())" width="50" height="50" />
+                        <input type="file" accept=".jpg,.jpeg,.png,jpe" name="file" id="file" />
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Save" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+   
+
+</div>
+<div>
+    @Html.ActionLink("Back to Cause List", "Index", "Tender", null)
+</div>
+    
+        }
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $("#AssignedTeam").change(function () {
+            var DepId = $(this).val();
+            debugger
+            $.ajax({
+                type: "post",
+                url: "/Tender/GetSelectedEmployee?SubDepartment=" + DepId,
+                contentType: "html",
+                success: function (response) {
+                   // debugger
+                    $("#Responsible_Personnel").empty();
+                    $("#Responsible_Personnel").append(response);
+                }
+            })
+
+        })
+
+    });
+
+
+
+    $(document).ready(function () {
+        $('input:text').each(function () {
+            $(this).attr('enable', true);
+        });
+
+
+        $("[id$='ProjectName']").change(function () {
+            var taxText = $("#ProjectName option:selected").text();;
+            $("#pNo").val(taxText);
+        })
+        $("[id$='AssignedTeam']").change(function () {
+            var taxText = $("#AssignedTeam option:selected").text();;
+            $("#Team").val(taxText);
+        })
+
+        $("[id$='Responsible_Personnel']").change(function () {
+            var taxText = $("#Responsible_Personnel option:selected").text();;
+            $("#Selpersonnel").val(taxText);
+        })
+
+        $("[id$='TypeOfWork']").change(function () {
+            var taxText4 = $("#TypeOfWork option:selected").text();;
+            $("#Type").val(taxText4);
+
+        })
+
+        $("[id$='Status']").change(function () {
+            var taxText4 = $("#Status option:selected").text();;
+            $("#Selstatus").val(taxText4);
+
+        })
+
+
+    });
+
+
+
+
+</script>
+
+
+
+
+
+

@@ -1,0 +1,178 @@
+﻿@model IEnumerable<Design_and_Supervion_Issue_Tracking.Models.ModelTender>
+
+
+    <div class="row" style="background-color:aliceblue">
+        
+        <div class="col-md-12">
+            <div class="panel panel-primary list-panel" id="list-panel">
+                <div class="panel-heading list-panel-heading">
+                    <h1 class="panel-title list-panel-title">List Of Tenders</h1>
+                </div>
+                <div class="panel-body">
+
+                    <div class="col-md-12">
+                        <div class="panel panel-primary list-panel" id="list-panel">
+                            <div class="panel-heading list-panel-heading">
+                                <h1 class="panel-title list-panel-title">List Of Interests</h1>
+                            </div>
+                            <div class="panel-body">
+
+                                @if (Session["role"].ToString() == "Admin")
+                                {
+                                @Html.ActionLink("Create New Interest", "Create", null, new { @class = "btn btn-primary" })
+                                <span> | </span>
+                                @Html.ActionLink("Project Sent to Legal", "Index", new { Status = "Sent To Legal" }, new { @class = "btn btn-primary" })
+                                }
+                                <span> | </span>
+                                @Html.ActionLink("Create New Project Initiation", "Index", new { controller = "ProjectInitiation" }, new { @class = "btn btn-primary" })
+                                <span> | </span>
+                                @Html.ActionLink("ADD SLA", "Index", new { controller = "SLA" }, new { @class = "btn btn-primary" })
+                                <span> | </span>
+                                @Html.ActionLink("ADD Kickoff", "Index", new { controller = "Kickoff" }, new { @class = "btn btn-primary" })
+                                <span> | </span>
+                                @Html.ActionLink("ADD Acceptance", "Index", new { controller = "Acceptance" }, new { @class = "btn btn-primary" })
+                                <span> | </span>
+                                @Html.ActionLink("ADD Commitement", "SLAlist", new { controller = "Commitement" }, new { @class = "btn btn-primary" })
+                                <br /><br />
+                                <table id="example2" class="display table nowrap table-bordered" style="width:100%; border-collapse:separate; border-spacing:5px 0;">
+                                    <thead class="thead-dark">
+                                        <tr>
+
+                                            <th data-priority="1" style="background-color:lightgray;color: #000000">
+                                                Tender Doc
+                                            </th>
+                                            <th data-priority="2" style="background-color:lightgray;color: #000000">
+                                                Client
+                                            </th>
+                                            <th data-priority="3" style="background-color:lightgray;color: #000000">
+                                                Project
+                                            </th>
+                                            <th data-priority="4" style="background-color:lightgray;color: #000000">
+                                                Received By
+                                            </th>
+                                            <th data-priority="5" style="background-color:lightgray;color: #000000">
+                                                Letter Date
+                                            </th>
+
+                                            <th data-priority="11">
+                                                Tender Closing Date
+                                            </th>
+                                            <th data-priority="12" style="background-color:lightgray;color: #000000">
+                                                Type Of Work
+                                            </th>
+                                            <th data-priority="8">
+                                                Remark :
+                                            </th>
+
+                                            <th style="text-align:left" data-priority="9">Main_Attachement</th>
+                                            <th style="text-align:left" data-priority="10">Other_Attachment</th>
+                                            <th data-priority="6">&nbsp;</th>
+                                            <th data-priority="7">&nbsp;</th>
+                                            <th data-priority="13">&nbsp;</th>
+                                            <th data-priority="14">&nbsp;</th>
+                                            <th data-priority="15">&nbsp;</th>
+
+                                        </tr>
+
+                                    </thead>
+                                    <tbody>
+
+                                        @foreach (var asset in Model)
+                                        {
+
+                                        <tr style='color: black;'>
+
+
+
+                                            <td>@asset.TenderDocNumber</td>
+                                            <td>@asset.ClientName</td>
+                                            <td>@asset.ProjectName</td>
+                                            <td>@asset.ReceivedBy</td>
+                                            <td>@asset.LetterDate.ToShortDateString()</td>
+                                            <td>@asset.TenderClosingDate.ToShortDateString()</td>
+                                            <td>@asset.TypeOfWork</td>
+                                            <td>@asset.Remark</td>
+
+
+
+
+                                            <td><a href="~/Tender/DownloadFile?filePath=@asset.Main_Attachement">Download</a> </td>
+                                            <td>
+                                                <a href="~/Tender/DownloadFile?filePath=@asset.Other_Attachment">Download</a>
+                                            </td>
+
+                                                <td>@Html.ActionLink("Assign Team", "AssignedList", "TenderDetail", new { Tid = asset.id }, new { @class = "btn btn-warning float-left" })</td>
+                                       
+                                            <td>@Html.ActionLink("Send Request", "RequestList", "Request", new { Tid = asset.id }, new { @class = "btn btn-warning float-left" })</td>
+                                            <td>@Html.ActionLink("Send To Legal and Tendering", "Index", "Legal", new { Tid = asset.id }, new { @class = "btn btn-warning float-left", onclick = "return confirm('Are you sure you want to close and send this record to Legal and Tendering team?' );" })</td>
+                                            @if (Session["role"].ToString() == "Admin" || Convert.ToString(Session["role"]) == "AdminUser")
+                                            {
+                                                <td style="padding:10px 0;">@Html.ActionLink("Edit", "Edit", new { id = asset.id }, new { @class = "btn btn-success" })</td>
+                                                <td>@Html.ActionLink("Delete", "Delete", new { id = asset.id }, new { @class = "btn btn-danger", onclick = "return confirm('Deleting this record also delete Assigned Employees for this issue, Are you sure you want to delete this record?' );" })</td>
+                                            }
+                                            else
+                                            {
+                                                <td></td>
+                                                <td></td>
+                                            }
+                                        </tr>
+                                        }
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @section Scripts
+{
+
+
+
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $('#example2').DataTable({
+                        "scrollY": 500,
+                        "scrollX": true,
+                        "responsive": true,
+
+                        "columnDefs": [
+                            { responsivePriority: 1 },
+                            { responsivePriority: 2 },
+                            { responsivePriority: 3 },
+                            { responsivePriority: 4 },
+                            { responsivePriority: 5 },
+                            { responsivePriority: 6 },
+
+                            { responsivePriority: 7 },
+                            { responsivePriority: 8 },
+                            { responsivePriority: 9 },
+                            { responsivePriority: 10 },
+
+                            { responsivePriority: 11 },
+                            { responsivePriority: 12 },
+                            { responsivePriority: 13 },
+                            { responsivePriority: 14 },
+                            { responsivePriority: 15 },
+                            { responsivePriority: 16 },
+                            { responsivePriority: 17 },
+                            { responsivePriority: 18 },
+                            { responsivePriority: 17 },
+                            { responsivePriority: 18 }
+
+
+                        ]
+
+                    });
+                });
+
+
+
+            </script>
+
+
+        }
+

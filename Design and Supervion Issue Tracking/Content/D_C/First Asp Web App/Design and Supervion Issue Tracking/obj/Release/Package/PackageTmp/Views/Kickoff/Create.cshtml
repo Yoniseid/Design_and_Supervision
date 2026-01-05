@@ -1,0 +1,109 @@
+﻿
+
+@model Design_and_Supervion_Issue_Tracking.Models.ModelKickoff
+
+
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<br />
+
+<div class="panel panel-primary">
+    <div class="panel-heading"><h2>Kick Off meeting Letter </h2></div>
+    <div class="panel-body">
+
+        @using (Html.BeginForm("Create", "Kickoff", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+
+
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group row">
+                <div class="col-md-4 mb-0">
+                    @Html.LabelFor(model => model.ProjectName, "Project ")
+                    <div class="valid-feedback">
+                        @if (ViewBag.ProjectName != null)
+                        {
+                            @Html.DropDownListFor(model => model.ProjectName, ViewBag.ProjectName as SelectList, "--Select--", new { @class = "form-control" })
+                        }
+                        @Html.ValidationMessageFor(model => model.ProjectName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-4 mb-0">
+                    @Html.Label("Letter No ")
+                    <div class="valid-feedback">
+
+                        @Html.EditorFor(model => model.KickoffmeetingLetterno, new { htmlAttributes = new { @class = "form-control" } })
+
+                        @Html.ValidationMessageFor(model => model.KickoffmeetingLetterno, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                <div class="col-md-4 mb-0">
+                    @Html.LabelFor(model => model.attachement, "Attachement ", new { @class = "col-sm-12 col-md-3 col-lg-2 col-form-label" })
+                    <div class="valid-feedback">
+                        <br />
+                        @Html.TextBox("file", null, new { @class = "form-control", @type = "file", @data_val = "true", @data_val_required = "Letter Attachement is reqired" })
+                        ,
+                        <span class="has-error" data-valmsg-for="file" data-valmsg-replace="true"></span>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group row text-right">
+                <div class="col-sm-12 col-md-9 col-lg-10">
+                    <input type="submit" value="Submit Form" class="btn btn-primary" />
+                </div>
+            </div>
+            <div>
+
+                <input id="projno" name="projno"  type="hidden"/>
+
+
+
+            </div>
+
+
+        }
+
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script type="text/javascript">
+
+
+
+
+    $(document).ready(function () {
+        $('input:text').each(function () {
+            $(this).attr('enable', true);
+        });
+
+
+        $("[id$='ProjectName']").change(function () {
+            var taxText = $("#ProjectName option:selected").text();;
+            $("#projno").val(taxText);
+        })
+
+
+
+
+
+
+    });
+
+
+
+
+    </script>

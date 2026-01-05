@@ -1,0 +1,229 @@
+﻿@model Design_and_Supervion_Issue_Tracking.Models.ModelResponse
+
+
+    <div class="panel panel-primary">
+        <div class="panel-heading"><h2>Edit Response</h2></div>
+        <div class="panel-body">
+            @Html.Raw(ViewBag.msg1);
+
+            @using (Html.BeginForm("Edit", "Response", FormMethod.Post,
+                new { enctype = "multipart/form-data" }))
+
+            {
+                @Html.AntiForgeryToken()
+
+
+            <div class="form-horizontal">
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.id)
+                <div class="form-group row">
+                    @Html.Label("Sub Department", "Sub Process Name: ", new { @class = "col-sm-12 col-md-3 col-lg-2 col-form-label" })
+                    <div class="col-sm-12 col-md-9 col-lg-10">
+                        @if (ViewBag.SubDepartment != null)
+                        {
+                               @Html.DropDownListFor(model => model.SubDepartment, ViewBag.SubDepartment as SelectList, "--Select--", new { @class = "form-control" })
+
+                        }
+                        @Html.ValidationMessageFor(model => model.SubDepartment, "", new { @class = "text-danger" })
+
+                    </div>
+                </div>
+                <div class="form-group row">
+                    @Html.Label("Assigned Personnel", "Employee Name ", new { @class = "col-sm-12 col-md-3 col-lg-2 col-form-label" })
+                    <div class="col-sm-12 col-md-9 col-lg-10">
+
+                        @Html.DropDownListFor(model => model.Responsible_Personnel,ViewBag.Responsible_Personnel as SelectList, "--Select Employee--", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Responsible_Personnel, "", new { @class = "text-danger" })
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TechDocProposal, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.HiddenFor(model => model.TechDocProposal, new { htmlAttributes = new { @class = "form-control" } })
+                        <img src="@Url.Content(Session["TechDocProposal"].ToString())" width="50" height="50" />
+                        <input type="file" accept=".jpg,.jpeg,.png,.jpe" name="file" id="file" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-4 mb-0">
+                        @Html.LabelFor(model => model.FinDocProposal, htmlAttributes: new { @class = "col-sm-12 col-md-3 col-lg-2 col-form-label" })
+                        <div class="col-md-12">
+                            @Html.HiddenFor(model => model.FinDocProposal, new { htmlAttributes = new { @class = "form-control" } })
+                            <img src="@Url.Content(Session["FinDocProposal"].ToString())" width="50" height="50" />
+                            <input type="file" accept=".jpg,.jpeg,.png,,jpe" name="file1" id="file1" />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-4 mb-0">
+                        @Html.LabelFor(model => model.FinalProposal, htmlAttributes: new { @class = "col-sm-12 col-md-3 col-lg-2 col-form-label" })
+                        <div class="col-md-12">
+                            @Html.HiddenFor(model => model.FinalProposal, new { htmlAttributes = new { @class = "form-control" } })
+                            <img src="@Url.Content(Session["FinalProposal"].ToString())" width="50" height="50" />
+                            <input type="file" accept=".jpg,.jpeg,.png,jpe" name="file2" id="file2" />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-4 mb-0">
+                        @Html.LabelFor(model => model.FinalAgreement, htmlAttributes: new { @class = "col-sm-12 col-md-3 col-lg-2 col-form-label" })
+                        <div class="col-md-12">
+                            @Html.HiddenFor(model => model.FinalAgreement, new { htmlAttributes = new { @class = "form-control" } })
+                            <img src="@Url.Content(Session["FinalAgreement"].ToString())" width="50" height="50" />
+                            <input type="file" accept=".jpg,.jpeg,.png,jpe" name="file3" id="file3" />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-4 mb-0">
+                        @Html.LabelFor(model => model.OtherAttachement, htmlAttributes: new { @class = "col-sm-12 col-md-3 col-lg-2 col-form-label" })
+                        <div class="col-md-12">
+                            @Html.HiddenFor(model => model.OtherAttachement, new { htmlAttributes = new { @class = "form-control" } })
+                            <img src="@Url.Content(Session["OtherAttachement"].ToString())" width="50" height="50" />
+                            <input type="file" accept=".jpg,.jpeg,.png,jpe" name="file4" id="file4" />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-4 mb-0">
+                        @Html.LabelFor(model => model.Status, "Status ")
+                        @Html.DropDownList("Status", new List<SelectListItem>
+              {
+
+                       new SelectListItem {Text="In Progress", Value="In Progress"},
+                       new SelectListItem {Text="Complete Send For Approval", Value="Complete Send For Approval"},
+
+
+
+              }, "--Select---", new { @class = "form-control", @data_val = "true", @data_val_required = "Status is reqired" })
+                        <div class="valid-feedback">
+                            <span class="danger" data-valmsg-for="Status" data-valmsg-replace="true"></span>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-4 mb-0">
+                        @if (Convert.ToInt32(Session["EmpId"]) != ViewBag.EmpId)
+                        {
+                            @Html.HiddenFor(model => model.Approved)
+                            @Html.Label("This Field Can Not Be Changed By this user")
+                        }
+                        else
+                        {
+                            @Html.LabelFor(model => model.Approved, "Approved ")
+                            @Html.DropDownList("Approved", new List<SelectListItem>
+                            {
+
+                           new SelectListItem {Text="Approved", Value="Approved"},
+                           new SelectListItem {Text="Not Complete", Value="Not Complete"},
+
+                            }, "--Select---", new { @class = "form-control", @data_val = "true", @data_val_required = "Approved is reqired" })
+
+
+                        }
+                        <div class="valid-feedback">
+                            <span class="danger" data-valmsg-for="Approved" data-valmsg-replace="true"></span>
+                        </div>
+                    </div>
+
+                </div>
+
+              
+
+                <div class="form-group row">
+                    @Html.LabelFor(model => model.ResponseRemark, "Remark ", new { @class = "col-sm-12 col-md-3 col-lg-2 col-form-label" })
+                    <div class="col-sm-12 col-md-9 col-lg-10">
+                        @Html.TextAreaFor(model => model.ResponseRemark, new { @class = "form-control", @rows = "6" })
+                        @Html.ValidationMessageFor(model => model.ResponseRemark, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <input id="empid" name="empid" value="@ViewBag.SelResponsible_Personnel"/>
+                <input id="subdeprt" name="subdeprt" value="@ViewBag.SelSubDepartment"/>
+                <input id="status" name="status" value="@ViewBag.Status" />
+                <input id="Approve" name="Approve" value="@ViewBag.Approved" />
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Save" class="btn btn-default" />
+                    </div>
+                </div>
+
+
+
+            </div>
+            }
+        </div>
+        <div>
+            @Html.ActionLink("Back to Cause List", "Index", "Tender", new { id = Session["EmpID"], subid = Session["SubDepartmentID"] }, null)
+        </div>
+
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/jqueryval")
+
+        <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#SubDepartment").change(function () {
+                    var ToDepId = $(this).val();
+                    debugger
+                    $.ajax({
+                        type: "post",
+                        url: "/Tender/GetSelectedEmployee?SubDepartment=" + ToDepId,
+                        contentType: "html",
+                        success: function (response) {
+                            debugger
+                            $("#Responsible_Personnel").empty();
+                            $("#Responsible_Personnel").append(response);
+                        }
+                    })
+
+                })
+
+            });
+
+
+
+            $(document).ready(function () {
+                $('input:text').each(function () {
+                    $(this).attr('enable', true);
+                });
+
+                $("[id$='Responsible_Personnel']").change(function () {
+                    var taxText = $("#Responsible_Personnel option:selected").text();;
+                    $("#empid").val(taxText);
+                })
+                   $("[id$='Status']").change(function () {
+                    var taxText = $("#Status option:selected").text();;
+                    $("#status").val(taxText);
+                })
+                $("[id$='SubDepartment']").change(function () {
+                    var taxText = $("#SubDepartment option:selected").text();;
+                    $("#subdeprt").val(taxText);
+                })
+                $("[id$='Approved']").change(function () {
+                    var taxText = $("#Approved option:selected").text();;
+                    $("#Approve").val(taxText);
+                })
+                $("[id$='ToDept']").change(function () {
+                    var taxText = $("#ToDept option:selected").text();;
+                    $("#subidto").val(taxText);
+                })
+
+            });
+
+
+        </script>
+
+
+
+
+
+
+
+
+
+

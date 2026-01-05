@@ -1,0 +1,9 @@
+﻿<parameters>
+  <parameter name="IIS Web Application Name" defaultValue="Default Web Site/Design and Supervion Issue Tracking_deploy" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^D:\\First\ Asp\ Web\ App\\Design\ and\ Supervion\ Issue\ Tracking\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^D:\\First\ Asp\ Web\ App\\Design\ and\ Supervion\ Issue\ Tracking\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="design-Web.config Connection String" defaultValue="data source=DESKTOP-4NEQ4OR\SQLEXPRESS; database=CERP_BUDSWS;integrated security=true">
+    <parameterEntry kind="XmlFile" scope="D:\\First\ Asp\ Web\ App\\Design\ and\ Supervion\ Issue\ Tracking\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='design']/@connectionString" />
+  </parameter>
+</parameters>
